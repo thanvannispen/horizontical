@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+
+<script src="scripts/soundmanager2.js"></script>
+<script>
+
+var group1= ["Piano1.mp3", "Piano2.mp3", "Piano3.mp3", "Piano4.mp3", "Piano5.mp3", "silence10sec.mp3", "silence10sec.mp3"];
+var group2= ["Cello1.mp3", "Cello2.mp3", "Cello3.mp3", "Cello4.mp3", "silence10sec.mp3"];
+var group3= ["Drone1.mp3", "Drone2.mp3", "Drone3.mp3", "silence10sec.mp3"];var group4= ["Gong1.mp3", "Organ1.mp3", "Organ2.mp3", "Paetzold1.mp3", "Paetzold2.mp3", "Paetzold3.mp3", "silence10sec.mp3", "silence10sec.mp3"];
+
+function random(group)
+{	var groupLength=group.length;
+	var random = Math.floor(Math.random()*groupLength);
+	return(random);
+}
+
+
+soundManager.setup({
+  url: 'swf/',
+  onready: function() {
+    var sound1 = soundManager.createSound({
+      id: sound1,
+      url: 'sounds/'+group1[random(group1)]
+    });
+    var sound2 = soundManager.createSound({
+      url: 'sounds/'+group2[random(group2)]
+    });
+    var sound3 = soundManager.createSound({
+      url: 'sounds/'+group3[random(group3)]
+    });
+    var sound4 = soundManager.createSound({
+      url: 'sounds/'+group4[random(group4)]
+    });        
+
+function loopSound1() {
+    var sound1 = soundManager.createSound({
+      id: sound1,
+      url: 'sounds/'+group1[random(group1)]
+    });
+	
+  sound1.play({
+    onfinish: function() {
+      loopSound1();
+    }
+  });
+}
+function loopSound2() {
+    var sound2 = soundManager.createSound({
+      id: sound2,
+      url: 'sounds/'+group2[random(group2)]
+    });
+	
+  sound2.play({
+    onfinish: function() {
+      loopSound2();
+    }
+  });
+}
+function loopSound3() {
+    var sound3 = soundManager.createSound({
+      id: sound3,
+      url: 'sounds/'+group3[random(group3)]
+    });
+	
+  sound3.play({
+    onfinish: function() {
+      loopSound3();
+    }
+  });
+}
+function loopSound4() {
+    var sound4 = soundManager.createSound({
+      id: sound4,
+      url: 'sounds/'+group4[random(group4)]
+    });
+	
+  sound4.play({
+    onfinish: function() {
+      loopSound4();
+    }
+  });
+}
+
+
+loopSound1();
+loopSound2();
+loopSound3();
+loopSound4();
+
+   
+  },
+  ontimeout: function() {
+    // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+  }
+});
+
+</script>
+<style>
+	body, html {height: 90%;}
+	body {background-color:#fefeee;}
+	svg {display:block}
+	text tspan {white-space:pre; fill:currentColor}
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+</style>
+    
+<title>Horizontical</title>
+</head>    
+
+<body>
+Randomizing horizontal and vertical music player
+</body>
+</html>
