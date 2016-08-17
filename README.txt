@@ -1,5 +1,7 @@
 README
 
 
+This web-app makes use of the SoundManager2 library.
 
-Piano1.mp3Piano2.mp3Piano3.mp3Piano4.mp3Piano5.mp3
+Music composer and copyright by Rutger Muller
+
